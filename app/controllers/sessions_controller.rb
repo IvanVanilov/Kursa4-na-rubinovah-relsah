@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    
     def new
     end
 
@@ -15,5 +16,9 @@ class SessionsController < ApplicationController
     end
 
     def destroy
+        session.delete :user_id
+        @_current_user = nil
+        flash[:success] = "bbk"
+        redirect_to root_path
     end
 end

@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-
+    flash[:success] = "Question удален!"
     redirect_to root_path, status: :see_other
   end
 

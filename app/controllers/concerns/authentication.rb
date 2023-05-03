@@ -16,6 +16,17 @@ module Authentication
         session[:user_id] = user.id
       end
 
+      def require_no_authentication
+        return unless !user_signed_in?
+        flash[:warning] = "IGFDGD"
+        redirect_to root_path
+      end
+
+      def sign_out
+        session.delete :user_id
+        @current_user = nil
+      end
+
       helper_method :current_user, :user_signed_in?
     end
 end

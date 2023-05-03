@@ -72,3 +72,5 @@ end
 gem "hotwire-rails", "~> 0.1.3"
 
 gem 'webpacker', github: 'rails/webpacker'
+
+gem 'jquery-rails'
