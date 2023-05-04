@@ -16,7 +16,12 @@
                 <%= current_user.name %>
               </a>
                    <%= link_to 'Log Out', session_path,
-                    class: 'dropdown-item', data: {turbo_method: :delete} %>             
+                    class: 'dropdown-item', data: {turbo_method: :delete} %>  
+                                        
+                  
+                    <%= link_to 'Edit profile', edit_user_path(current_user),
+                    class: 'dropdown-item' %>
+                </li>                              
             </li>
             
           <% else %>
