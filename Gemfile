@@ -44,6 +44,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem 'pagy', '~> 6.0'
 
 gem "draper", "~> 4.0"
 # Use Sass to process CSS
@@ -74,3 +75,5 @@ gem "hotwire-rails", "~> 0.1.3"
 gem 'webpacker', github: 'rails/webpacker'
 
 gem 'jquery-rails'
+
+gem "pundit", "~> 2.3"

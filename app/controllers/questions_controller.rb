@@ -1,9 +1,10 @@
 class QuestionsController < ApplicationController
+  before_action :require_authentication, expect: %i[show index]
   before_action :set_question!, only: %i[show destroy edit update]
 
   def show
     @answer = @question.answers.build
-    @answers = @question.answers.order created_at: :desc
+    @pagy, @answers = pagy @question.answers.order(created_at: :desc)
   end
 
   def destroy
@@ -25,7 +26,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.all
+    @pagy, @questions = pagy Question.order(created_at: :desc)
   end
 
   def new
