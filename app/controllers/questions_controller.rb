@@ -1,6 +1,8 @@
 class QuestionsController < ApplicationController
   before_action :require_authentication, expect: %i[show index]
   before_action :set_question!, only: %i[show destroy edit update]
+  before_action :authorize_question!
+  after_action :verify_authorized
 
   def show
     @answer = @question.answers.build
@@ -9,7 +11,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    flash[:success] = "Question удален!"
+    flash[:success] = "Статья удалена!"
     redirect_to root_path, status: :see_other
   end
 
@@ -18,7 +20,7 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update question_params
-      flash[:success] = "Question updated!"
+      flash[:success] = "Статья обновлена!"
       redirect_to questions_path
     else
       render :edit
@@ -36,7 +38,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new question_params
     if @question.save
-      flash[:success] = "Question created!"
+      flash[:success] = "Статья создана!"
       redirect_to questions_path
     else
       render :new
@@ -51,6 +53,11 @@ class QuestionsController < ApplicationController
 
   def set_question!
     @question = Question.find params[:id]
+  end
+
+  
+  def authorize_question!
+    authorize(@question || Question)
   end
   
 end
