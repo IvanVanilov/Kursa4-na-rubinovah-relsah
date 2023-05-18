@@ -14,14 +14,12 @@
             <li>
               <a class="nav-link px-2 text-white" href="#">
                 <%= current_user.name %>
-              </a>
-                   <%= link_to 'Log Out', session_path,
-                    class: 'dropdown-item', data: {turbo_method: :delete} %>  
-                                        
-                  
-                    <%= link_to 'Edit profile', edit_user_path(current_user),
-                    class: 'dropdown-item' %>
-                </li>                              
+              </a>     
+                </li>
+                    <%= nav_tab 'Edit profile', edit_user_path(current_user),
+                    class: 'nav-link px-2' %>                    
+                    <%= nav_tab 'Log Out', session_path,
+                    class: 'nav-link px-2', data: {turbo_method: :delete} %>                             
             </li>
             
           <% else %>
