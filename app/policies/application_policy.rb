@@ -4,16 +4,16 @@ class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
-    @user = user
+    @user = user || GuestUser.new
     @record = record
   end
 
   def index?
-    true
+    false
   end
 
   def show?
-    true
+    false
   end
 
   def create?
@@ -43,7 +43,7 @@ class ApplicationPolicy
     end
 
     def resolve
-      raise NotImplementedError, "You must define #resolve in #{self.class}"
+      scope.all
     end
 
     private
