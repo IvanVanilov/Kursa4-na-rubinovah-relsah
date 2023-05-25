@@ -1,9 +1,10 @@
-<h1>Edit</h1>
+<% currently_at 'Статьи' %>
+<h1>Редактирование комментария</h1>
 
 <%= form_with model: [@question, @answer] do |f| %>
   <div class="mb-3 row">
     <div class="col-sm-2 col-form-label">
-      <%= f.label :body %>
+      <%= f.label :Содержание %>
     </div>
 
     <div class="col-sm-10">
@@ -11,5 +12,5 @@
     </div>
   </div>
 
-  <%= f.submit "Submit answer!", class: 'btn btn-primary' %>
+  <%= f.submit "Добавить комментарий!", class: 'btn btn-primary' %>
 <% end %>

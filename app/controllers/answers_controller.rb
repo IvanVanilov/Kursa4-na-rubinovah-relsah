@@ -5,7 +5,7 @@ class AnswersController < ApplicationController
     @answer = @question.answers.build answer_params
 
     if @answer.save
-      flash[:success] = "Answer created!"
+      flash[:success] = "Комментарий удален!"
       redirect_to question_path(@question)
     else
       @answers = @question.answers.order created_at: :desc
@@ -20,7 +20,7 @@ class AnswersController < ApplicationController
   def update
     @answer = @question.answers.find params[:id]
     if @answer.update answer_params
-      flash[:success] = "Answer updated!"
+      flash[:success] = "Комментарий обновлен!"
       redirect_to question_path(@question), status: :see_other
     else
       render :edit
@@ -30,7 +30,7 @@ class AnswersController < ApplicationController
   def destroy
     answer = @question.answers.find params[:id]
     answer.destroy
-    flash[:success] = "Answer deleted!"
+    flash[:success] = "Комментарий удален!"
     redirect_to question_path(@question), status: :see_other
   end
 
